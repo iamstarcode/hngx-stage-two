@@ -1,14 +1,13 @@
-//import { Person, validatePersonData } from '../validations/user-validation';
 import {
   Body,
   Controller,
   Route,
   Post,
-  Middlewares,
   SuccessResponse,
-  Response,
   Get,
   Path,
+  Put,
+  Delete,
 } from 'tsoa';
 
 interface Person {
@@ -18,59 +17,13 @@ interface Person {
 }
 export type PersonCreationParams = Pick<Person, 'age' | 'name'>;
 
-interface ValidateErrorJSON {
-  message: 'Validation failed';
-  details: { [name: string]: unknown };
-}
-
 import { prisma } from '../db/postgres';
 
-/*
-import { PersonData } from '../validations/user-validation'; */
-/* const CreateUser = async (req: Request, res: Response) => {
-  const validatedData: PersonData = res.locals.validatedData.data;
-  if (validatedData) {
-    const user = await prisma.person.create({
-      data: {
-        ...validatedData,
-      },
-    });
-    res.json(user);
-    prisma.$disconnect();
-  }
-};
-
-const GetUser = async (req: Request, res: Response) => {
-  const { id } = req.params;
-
-  if (!id || isNaN(parseInt(id))) {
-    res.status(400).json({ error: 'You supplied an invalid Id' });
-  } else {
-    const user = await prisma.person.findFirst({
-      where: {
-        user_id: {
-          equals: parseInt(id),
-        },
-      },
-    });
-
-    if (!user) {
-      res.status(404).json({ message: 'User not found' });
-    } else {
-      res.json(user);
-    }
-    prisma.$disconnect();
-  }
-};
- */
-
-//
 @Route('api')
 export class UserController extends Controller {
-  @Response<ValidateErrorJSON>(422, 'Validation Failed')
   @SuccessResponse('201', 'Created')
   @Post()
-  async createUser(@Body() requestBody: PersonCreationParams): Promise<Person> {
+  async createUser(@Body() requestBody: PersonCreationParams): Promise<any> {
     const user = await prisma.person.create({
       data: {
         ...requestBody,
@@ -79,11 +32,75 @@ export class UserController extends Controller {
 
     prisma.$disconnect();
     this.setStatus(201);
-    return user;
+    return {
+      message: 'Person Created',
+      user,
+    };
   }
 
   @Get('{userId}')
   async getUser(@Path() userId: number) {
-    console.log(userId);
+    const user = await prisma.person.findFirst({
+      where: {
+        user_id: {
+          equals: userId,
+        },
+      },
+    });
+
+    prisma.$disconnect();
+    if (!user) {
+      this.setStatus(404);
+      return { message: 'Person not found' };
+    } else {
+      return user;
+    }
+  }
+
+  @Put('{userId}')
+  async updateUser(
+    @Path() userId: number,
+    @Body() requestBody: PersonCreationParams
+  ) {
+    const user = await prisma.person.update({
+      where: {
+        user_id: userId,
+      },
+      data: {
+        ...requestBody,
+      },
+    });
+
+    prisma.$disconnect();
+
+    return {
+      message: 'User updated',
+      user,
+    };
+  }
+
+  @Delete('{userId}')
+  async deleteUser(@Path() userId: number) {
+    try {
+      const user = await prisma.person.delete({
+        where: {
+          user_id: userId,
+        },
+      });
+
+      return {
+        message: 'User deleted',
+        user,
+      };
+    } catch (error: any) {
+      console.log(error);
+      if (error.code == 'P2025') {
+        this.setStatus(404);
+        return {
+          message: `Person with ${userId} does not exit`,
+        };
+      }
+    }
+    prisma.$disconnect();
   }
 }

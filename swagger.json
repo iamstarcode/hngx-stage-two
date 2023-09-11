@@ -6,50 +6,6 @@
 		"requestBodies": {},
 		"responses": {},
 		"schemas": {
-			"Person": {
-				"properties": {
-					"user_id": {
-						"type": "number",
-						"format": "double"
-					},
-					"age": {
-						"type": "number",
-						"format": "double"
-					},
-					"name": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"user_id",
-					"age",
-					"name"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ValidateErrorJSON": {
-				"properties": {
-					"message": {
-						"type": "string",
-						"enum": [
-							"Validation failed"
-						],
-						"nullable": false
-					},
-					"details": {
-						"properties": {},
-						"additionalProperties": {},
-						"type": "object"
-					}
-				},
-				"required": [
-					"message",
-					"details"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
 			"Pick_Person.age-or-name_": {
 				"properties": {
 					"age": {
@@ -91,19 +47,7 @@
 						"description": "Created",
 						"content": {
 							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/Person"
-								}
-							}
-						}
-					},
-					"422": {
-						"description": "Validation Failed",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/ValidateErrorJSON"
-								}
+								"schema": {}
 							}
 						}
 					}
@@ -126,8 +70,188 @@
 			"get": {
 				"operationId": "GetUser",
 				"responses": {
-					"204": {
-						"description": "No content"
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"properties": {
+												"age": {
+													"type": "number",
+													"format": "double"
+												},
+												"name": {
+													"type": "string"
+												},
+												"user_id": {
+													"type": "number",
+													"format": "double"
+												}
+											},
+											"required": [
+												"age",
+												"name",
+												"user_id"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"message": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"message"
+											],
+											"type": "object"
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "UpdateUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"user": {
+											"properties": {
+												"age": {
+													"type": "number",
+													"format": "double"
+												},
+												"name": {
+													"type": "string"
+												},
+												"user_id": {
+													"type": "number",
+													"format": "double"
+												}
+											},
+											"required": [
+												"age",
+												"name",
+												"user_id"
+											],
+											"type": "object"
+										},
+										"message": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"user",
+										"message"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/PersonCreationParams"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeleteUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"properties": {
+												"user": {
+													"properties": {
+														"age": {
+															"type": "number",
+															"format": "double"
+														},
+														"name": {
+															"type": "string"
+														},
+														"user_id": {
+															"type": "number",
+															"format": "double"
+														}
+													},
+													"required": [
+														"age",
+														"name",
+														"user_id"
+													],
+													"type": "object"
+												},
+												"message": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"user",
+												"message"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"user": {},
+												"message": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"message"
+											],
+											"type": "object"
+										}
+									]
+								}
+							}
+						}
 					}
 				},
 				"security": [],

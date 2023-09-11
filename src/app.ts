@@ -26,9 +26,6 @@ app.use(
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-//app.post('/api', validatePersonData, CreateUser);
-//app.get('/api/:id', GetUser);
-
 RegisterRoutes(app);
 
 app.use(function notFoundHandler(_req, res: ExResponse) {
