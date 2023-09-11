@@ -5,13 +5,12 @@
   "main": "build/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec-and-routes\"",
+    "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec-routes\"",
     "build": "tsoa spec-and-routes && tsc",
     "start": "node build/app.js",
     "predev": "npm run swagger",
     "prebuild": "npm run swagger",
-    "swagger": "tsoa spec",
-    "gen": "tsoa routes && tsoa swagger"
+    "swagger": "tsoa spec"
   },
   "keywords": [],
   "author": "",

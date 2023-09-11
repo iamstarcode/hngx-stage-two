@@ -1,8 +1,31 @@
-import { Body, Controller, Route, Post } from 'tsoa';
+//import { Person, validatePersonData } from '../validations/user-validation';
+import {
+  Body,
+  Controller,
+  Route,
+  Post,
+  Middlewares,
+  SuccessResponse,
+  Response,
+  Get,
+  Path,
+} from 'tsoa';
 
-//import { PersonCreationParams } from 'src/validations/user-validation';
+interface Person {
+  user_id: number;
+  age: number;
+  name: string;
+}
+export type PersonCreationParams = Pick<Person, 'age' | 'name'>;
 
-/* import { prisma } from '../db/postgres';
+interface ValidateErrorJSON {
+  message: 'Validation failed';
+  details: { [name: string]: unknown };
+}
+
+import { prisma } from '../db/postgres';
+
+/*
 import { PersonData } from '../validations/user-validation'; */
 /* const CreateUser = async (req: Request, res: Response) => {
   const validatedData: PersonData = res.locals.validatedData.data;
@@ -40,15 +63,27 @@ const GetUser = async (req: Request, res: Response) => {
   }
 };
  */
-@Route('/api')
-export class UserController extends Controller {
-  @Post()
-  async createUser(@Body() requestBody: any): Promise<any> {
-    console.log(requestBody);
-    this.setStatus(201); // set return status 201
 
-    return {
-      message: 'hello',
-    };
+//
+@Route('api')
+export class UserController extends Controller {
+  @Response<ValidateErrorJSON>(422, 'Validation Failed')
+  @SuccessResponse('201', 'Created')
+  @Post()
+  async createUser(@Body() requestBody: PersonCreationParams): Promise<Person> {
+    const user = await prisma.person.create({
+      data: {
+        ...requestBody,
+      },
+    });
+
+    prisma.$disconnect();
+    this.setStatus(201);
+    return user;
+  }
+
+  @Get('{userId}')
+  async getUser(@Path() userId: number) {
+    console.log(userId);
   }
 }
