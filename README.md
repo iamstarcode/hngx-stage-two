@@ -35,8 +35,6 @@ npx prisma migrate deploy
 ![UML](https://github.com/iamstarcode/hngx-stage-two/assets/66052346/98ceba79-3511-4024-9f76-d88bd0448fc7)
 
 
-its gon to be an immae
-
 # Usage & API Documentation
 
 To test the API and Documentation, Head over to the Documentation page here
