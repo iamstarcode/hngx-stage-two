@@ -5,7 +5,7 @@
 Clone the repo and install dependencies.
 This repo uses a PostgreSQL database and use Prisma ORM for database connection.
 Repo contains a migration to setup the database persons table.
-Depending on the enviroment variables DATABASE_URL value in a .env file, it is used to estbalish a connection to the Database either locally or on a server.
+Depending on the enviroment variables DATABASE_URL value in a .env file, it is used to establish a connection to a Database either locally or on a server.
 
 Exmaple for a local deployment using running Postgres DB
 
