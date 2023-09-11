@@ -16,7 +16,7 @@ import { ValidateError } from 'tsoa';
 const app = express();
 
 app.use(
-  '/api/v1/docs',
+  '/api/docs',
   swaggerUI.serve,
   async (_req: ExRequest, res: ExResponse) => {
     return res.send(swaggerUI.generateHTML(await import('../swagger.json')));
@@ -56,8 +56,8 @@ app.use(function errorHandler(
   next();
 });
 
-const APP_PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
-app.listen(APP_PORT, () => {
-  console.log(`Server started on port ${APP_PORT}`);
+app.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}`);
 });
