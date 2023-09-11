@@ -23,7 +23,9 @@ import { prisma } from '../db/postgres';
 export class UserController extends Controller {
   @SuccessResponse('201', 'Created')
   @Post()
-  async createUser(@Body() requestBody: PersonCreationParams): Promise<any> {
+  async createUser(
+    @Body() requestBody: PersonCreationParams
+  ): Promise<{ user: Person; message: string }> {
     const user = await prisma.person.create({
       data: {
         ...requestBody,
@@ -73,6 +75,8 @@ export class UserController extends Controller {
 
     prisma.$disconnect();
 
+    this.setStatus(201);
+
     return {
       message: 'User updated',
       user,
@@ -97,10 +101,12 @@ export class UserController extends Controller {
       if (error.code == 'P2025') {
         this.setStatus(404);
         return {
-          message: `Person with ${userId} does not exit`,
+          message: `Person with id ${userId} does not exit`,
         };
       }
     }
+
+    this.setStatus(204);
     prisma.$disconnect();
   }
 }

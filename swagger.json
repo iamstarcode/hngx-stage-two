@@ -6,6 +6,28 @@
 		"requestBodies": {},
 		"responses": {},
 		"schemas": {
+			"Person": {
+				"properties": {
+					"user_id": {
+						"type": "number",
+						"format": "double"
+					},
+					"age": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"user_id",
+					"age",
+					"name"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
 			"Pick_Person.age-or-name_": {
 				"properties": {
 					"age": {
@@ -30,7 +52,7 @@
 		"securitySchemes": {}
 	},
 	"info": {
-		"title": "hngx-stage-one",
+		"title": "hngx-stage-two",
 		"version": "1.0.0",
 		"license": {
 			"name": "ISC"
@@ -47,7 +69,21 @@
 						"description": "Created",
 						"content": {
 							"application/json": {
-								"schema": {}
+								"schema": {
+									"properties": {
+										"message": {
+											"type": "string"
+										},
+										"user": {
+											"$ref": "#/components/schemas/Person"
+										}
+									},
+									"required": [
+										"message",
+										"user"
+									],
+									"type": "object"
+								}
 							}
 						}
 					}

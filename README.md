@@ -1,16 +1,31 @@
 # HNGX Stage Two
 
-## Overview
+## Setup
 
 Clone the repo and install dependencies.
 This repo uses a PostgreSQL database and use Prisma ORM for database connection.
-Repo contains a migration to setup the database Person table.
-Depending on the enviroment variables DATABASE_URL in a .env file it setup DB and creates Person table by simply running this command.
-exmaple for a local deployment using running Postgres DB
+Repo contains a migration to setup the database persons table.
+Depending on the enviroment variables DATABASE_URL value in a .env file, it is used to estbalish a connection to the Database either locally or on a server.
+
+Exmaple for a local deployment using running Postgres DB
 
 ```bash
 DATABASE_URL="postgresql://postgres:root@localhost:5432/test?schema=public"
 ```
+
+To run a Postgres container using Docker run this command
+
+```bash
+docker run -d --name postgres-container \
+  -e POSTGRES_DB=test \
+  -e POSTGRES_USER=postgres \
+  -e POSTGRES_PASSWORD=root \
+  -p 5432:5432 \
+  postgres:15.3-alpine
+
+```
+
+In this repo contains DB migration to create the person table. To setup Db run this command
 
 ```bash
 npx prisma migrate deploy
@@ -20,8 +35,8 @@ npx prisma migrate deploy
 
 its gon to be an immae
 
-# Usage
+# Usage & API Documentation
 
-To test the API, I implemented the Swagger API Document which can be found on this live URL
+To test the API and Documentation, Head over to the Documentation page here
 
 [Live URL](https://hngx-stage-two-1ifi.onrender.com/api/docs)
