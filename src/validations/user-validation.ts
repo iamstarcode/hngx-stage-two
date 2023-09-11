@@ -21,8 +21,6 @@ const validatePersonData = (
       res.status(400).json({ formatted });
     }
 
-    console.log(personData, 'hghgh');
-
     res.locals.validatedData = personData;
 
     next();

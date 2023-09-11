@@ -17,11 +17,11 @@ const CreateUser = async (req: Request, res: Response) => {
 };
 
 const GetUser = async (req: Request, res: Response) => {
-  const validatedData: PersonData = res.locals.validatedData.data;
-
   const { id } = req.params;
 
-  if (validatedData) {
+  if (!id || isNaN(parseInt(id))) {
+    res.status(400).json({ error: 'You supplied an invalid Id' });
+  } else {
     const user = await prisma.person.findFirst({
       where: {
         user_id: {
@@ -30,8 +30,12 @@ const GetUser = async (req: Request, res: Response) => {
       },
     });
 
+    if (!user) {
+      res.status(404).json({ message: 'User not found' });
+    } else {
+      res.json(user);
+    }
     prisma.$disconnect();
-    res.json(user);
   }
 };
 export { CreateUser, GetUser };
