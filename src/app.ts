@@ -10,9 +10,6 @@ import * as bodyParser from 'body-parser';
 
 import swaggerUI from 'swagger-ui-express';
 
-import { ValidateError } from 'tsoa';
-
-//import UserRoute from './routes/user-router';
 const app = express();
 
 app.use(
