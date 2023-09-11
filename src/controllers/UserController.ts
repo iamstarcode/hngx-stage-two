@@ -1,9 +1,8 @@
-import { Request, Response } from 'express';
+import { Controller, Get, Route } from 'tsoa';
 
-import { prisma } from '../db/postgres';
-import { PersonData } from '../validations/user-validation';
-
-const CreateUser = async (req: Request, res: Response) => {
+/* import { prisma } from '../db/postgres';
+import { PersonData } from '../validations/user-validation'; */
+/* const CreateUser = async (req: Request, res: Response) => {
   const validatedData: PersonData = res.locals.validatedData.data;
   if (validatedData) {
     const user = await prisma.person.create({
@@ -38,4 +37,13 @@ const GetUser = async (req: Request, res: Response) => {
     prisma.$disconnect();
   }
 };
-export { CreateUser, GetUser };
+ */
+@Route('users')
+export default class UserController extends Controller {
+  @Get('/v')
+  async getMessage(): Promise<any> {
+    return {
+      message: 'hello',
+    };
+  }
+}

@@ -1,4 +1,4 @@
-import { ZodError, inferFormattedError, typeToFlattenedError, z } from 'zod';
+import { z } from 'zod';
 import { Request, Response, NextFunction } from 'express';
 
 const personSchema = z.object({
@@ -6,7 +6,7 @@ const personSchema = z.object({
   age: z.number().min(5),
 });
 
-type PersonData = z.infer<typeof personSchema>;
+type Person = z.infer<typeof personSchema>;
 
 const validatePersonData = (
   req: Request,
@@ -29,4 +29,4 @@ const validatePersonData = (
   }
 };
 
-export { PersonData, validatePersonData };
+export { Person, validatePersonData };
