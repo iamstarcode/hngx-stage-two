@@ -32,11 +32,13 @@ npx prisma migrate deploy
 ```
 
 # UML
-![UML](https://github.com/iamstarcode/hngx-stage-two/assets/66052346/98ceba79-3511-4024-9f76-d88bd0448fc7)
 
+![UML](https://github.com/iamstarcode/hngx-stage-two/assets/66052346/98ceba79-3511-4024-9f76-d88bd0448fc7)
 
 # Usage & API Documentation
 
 To test the API and Documentation, Head over to the Documentation page here
 
 [Live URL](https://hngx-stage-two-1ifi.onrender.com/api/docs)
+
+On the docs page click on any of the API endpoint and click on the "Try it Out" button to test the API
