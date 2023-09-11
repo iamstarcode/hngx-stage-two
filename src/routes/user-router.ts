@@ -1,6 +1,6 @@
 import express from 'express';
 //import { validatePersonData } from '../validations/user-validation';
-import PingController from '../controllers/UserController';
+//import UserController from '../controllers/UserController';
 
 const router = express.Router();
 
@@ -8,9 +8,9 @@ const router = express.Router();
 //router.get('/:id', GetUser);
 
 router.get('/ping', async (_req, res) => {
-  const controller = new PingController();
-  const response = await controller.getMessage();
-  return res.send(response);
+  //const controller = new UserController();
+  //const response = await controller.getMessage();
+  return res.send('vdff');
 });
 
 //

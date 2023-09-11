@@ -2,11 +2,13 @@ import { z } from 'zod';
 import { Request, Response, NextFunction } from 'express';
 
 const personSchema = z.object({
+  id: z.number(),
   name: z.string().min(5),
   age: z.number().min(5),
 });
 
-type Person = z.infer<typeof personSchema>;
+export type Person = z.infer<typeof personSchema>;
+export type PersonCreationParams = Pick<Person, 'age' | 'name'>;
 
 const validatePersonData = (
   req: Request,
@@ -29,4 +31,4 @@ const validatePersonData = (
   }
 };
 
-export { Person, validatePersonData };
+export { validatePersonData };

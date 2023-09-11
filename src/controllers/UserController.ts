@@ -1,4 +1,6 @@
-import { Controller, Get, Route } from 'tsoa';
+import { Body, Controller, Route, Post } from 'tsoa';
+
+//import { PersonCreationParams } from 'src/validations/user-validation';
 
 /* import { prisma } from '../db/postgres';
 import { PersonData } from '../validations/user-validation'; */
@@ -38,10 +40,13 @@ const GetUser = async (req: Request, res: Response) => {
   }
 };
  */
-@Route('users')
-export default class UserController extends Controller {
-  @Get('/v')
-  async getMessage(): Promise<any> {
+@Route('/api')
+export class UserController extends Controller {
+  @Post()
+  async createUser(@Body() requestBody: any): Promise<any> {
+    console.log(requestBody);
+    this.setStatus(201); // set return status 201
+
     return {
       message: 'hello',
     };
