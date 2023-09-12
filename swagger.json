@@ -70,19 +70,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"properties": {
-										"message": {
-											"type": "string"
-										},
-										"user": {
-											"$ref": "#/components/schemas/Person"
-										}
-									},
-									"required": [
-										"message",
-										"user"
-									],
-									"type": "object"
+									"$ref": "#/components/schemas/Person"
 								}
 							}
 						}
@@ -172,34 +160,22 @@
 							"application/json": {
 								"schema": {
 									"properties": {
-										"user": {
-											"properties": {
-												"age": {
-													"type": "number",
-													"format": "double"
-												},
-												"name": {
-													"type": "string"
-												},
-												"user_id": {
-													"type": "number",
-													"format": "double"
-												}
-											},
-											"required": [
-												"age",
-												"name",
-												"user_id"
-											],
-											"type": "object"
+										"age": {
+											"type": "number",
+											"format": "double"
 										},
-										"message": {
+										"name": {
 											"type": "string"
+										},
+										"user_id": {
+											"type": "number",
+											"format": "double"
 										}
 									},
 									"required": [
-										"user",
-										"message"
+										"age",
+										"name",
+										"user_id"
 									],
 									"type": "object"
 								}
@@ -241,40 +217,27 @@
 									"anyOf": [
 										{
 											"properties": {
-												"user": {
-													"properties": {
-														"age": {
-															"type": "number",
-															"format": "double"
-														},
-														"name": {
-															"type": "string"
-														},
-														"user_id": {
-															"type": "number",
-															"format": "double"
-														}
-													},
-													"required": [
-														"age",
-														"name",
-														"user_id"
-													],
-													"type": "object"
+												"age": {
+													"type": "number",
+													"format": "double"
 												},
-												"message": {
+												"name": {
 													"type": "string"
+												},
+												"user_id": {
+													"type": "number",
+													"format": "double"
 												}
 											},
 											"required": [
-												"user",
-												"message"
+												"age",
+												"name",
+												"user_id"
 											],
 											"type": "object"
 										},
 										{
 											"properties": {
-												"user": {},
 												"message": {
 													"type": "string"
 												}

@@ -23,9 +23,7 @@ import { prisma } from '../db/postgres';
 export class UserController extends Controller {
   @SuccessResponse('201', 'Created')
   @Post()
-  async createUser(
-    @Body() requestBody: PersonCreationParams
-  ): Promise<{ user: Person; message: string }> {
+  async createUser(@Body() requestBody: PersonCreationParams): Promise<Person> {
     const user = await prisma.person.create({
       data: {
         ...requestBody,
@@ -34,10 +32,7 @@ export class UserController extends Controller {
 
     prisma.$disconnect();
     this.setStatus(201);
-    return {
-      message: 'Person Created',
-      user,
-    };
+    return user;
   }
 
   @Get('{userId}')
@@ -77,10 +72,7 @@ export class UserController extends Controller {
 
     this.setStatus(201);
 
-    return {
-      message: 'User updated',
-      user,
-    };
+    return user;
   }
 
   @Delete('{userId}')
@@ -92,10 +84,7 @@ export class UserController extends Controller {
         },
       });
 
-      return {
-        message: 'User deleted',
-        user,
-      };
+      return user;
     } catch (error: any) {
       console.log(error);
       if (error.code == 'P2025') {

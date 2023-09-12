@@ -1,20 +1,23 @@
-# Project: hngx-stage-two
-# 📁 Collection: api 
+# Project: hngx-stage-two Copy
 
+# 📁 Collection: api
 
 ## End-point: Get User
+
 ### Method: GET
->```
->{{baseUrl}}/api/:userId
->```
+
+> ```
+> {{baseUrl}}/api/:userId
+> ```
+
 ### Headers
 
-|Content-Type|Value|
-|---|---|
-|Accept|application/json|
-
+| Content-Type | Value            |
+| ------------ | ---------------- |
+| Accept       | application/json |
 
 ### Response: 200
+
 ```json
 {
   "age": "<double>",
@@ -23,27 +26,27 @@
 }
 ```
 
-
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
 
 ## End-point: Update User
+
 ### Method: PUT
->```
->{{baseUrl}}/api/:userId
->```
-### Headers
 
-|Content-Type|Value|
-|---|---|
-|Content-Type|application/json|
-
+> ```
+> {{baseUrl}}/api/:userId
+> ```
 
 ### Headers
 
-|Content-Type|Value|
-|---|---|
-|Accept|application/json|
+| Content-Type | Value            |
+| ------------ | ---------------- |
+| Content-Type | application/json |
 
+### Headers
+
+| Content-Type | Value            |
+| ------------ | ---------------- |
+| Accept       | application/json |
 
 ### Body (**raw**)
 
@@ -55,65 +58,62 @@
 ```
 
 ### Response: 200
+
 ```json
 {
-  "user": {
-    "age": "<double>",
-    "name": "<string>",
-    "user_id": "<double>"
-  },
-  "message": "<string>"
+  "age": "<double>",
+  "name": "<string>",
+  "user_id": "<double>"
 }
 ```
-
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
 
 ## End-point: Delete User
+
 ### Method: DELETE
->```
->{{baseUrl}}/api/:userId
->```
+
+> ```
+> {{baseUrl}}/api/:userId
+> ```
+
 ### Headers
 
-|Content-Type|Value|
-|---|---|
-|Accept|application/json|
-
+| Content-Type | Value            |
+| ------------ | ---------------- |
+| Accept       | application/json |
 
 ### Response: 200
+
 ```json
 {
-  "user": {
-    "age": "<double>",
-    "name": "<string>",
-    "user_id": "<double>"
-  },
-  "message": "<string>"
+  "age": "<double>",
+  "name": "<string>",
+  "user_id": "<double>"
 }
 ```
-
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
 
 ## End-point: Create User
+
 ### Method: POST
->```
->{{baseUrl}}/api
->```
-### Headers
 
-|Content-Type|Value|
-|---|---|
-|Content-Type|application/json|
-
+> ```
+> {{baseUrl}}/api
+> ```
 
 ### Headers
 
-|Content-Type|Value|
-|---|---|
-|Accept|application/json|
+| Content-Type | Value            |
+| ------------ | ---------------- |
+| Content-Type | application/json |
 
+### Headers
+
+| Content-Type | Value            |
+| ------------ | ---------------- |
+| Accept       | application/json |
 
 ### Body (**raw**)
 
@@ -125,17 +125,13 @@
 ```
 
 ### Response: 201
+
 ```json
 {
-  "message": "<string>",
-  "user": {
-    "user_id": "<double>",
-    "age": "<double>",
-    "name": "<string>"
-  }
+  "user_id": "<double>",
+  "age": "<double>",
+  "name": "<string>"
 }
 ```
 
-
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
-_________________________________________________
