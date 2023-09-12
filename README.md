@@ -22,7 +22,6 @@ docker run -d --name postgres-container \
   -e POSTGRES_PASSWORD=root \
   -p 5432:5432 \
   postgres:15.3-alpine
-
 ```
 
 In this repo contains DB migration to create the person table. To setup Db run this command
