@@ -7,7 +7,7 @@
 ### Method: GET
 
 > ```
-> {{baseUrl}}/api/:personId
+> {{baseUrl}}/api/:userId
 > ```
 
 ### Headers
@@ -21,7 +21,7 @@
 ```json
 {
   "name": "<string>",
-  "person_id": "<double>"
+  "user_id": "<double>"
 }
 ```
 
@@ -32,7 +32,7 @@
 ### Method: PUT
 
 > ```
-> {{baseUrl}}/api/:personId
+> {{baseUrl}}/api/:userId
 > ```
 
 ### Headers
@@ -68,7 +68,7 @@
 ### Method: DELETE
 
 > ```
-> {{baseUrl}}/api/:personId
+> {{baseUrl}}/api/:userId
 > ```
 
 ### Headers
@@ -82,7 +82,7 @@
 ```json
 {
   "name": "<string>",
-  "person_id": "<double>"
+  "user_id": "<double>"
 }
 ```
 
@@ -120,7 +120,7 @@
 
 ```json
 {
-  "person_id": "<double>",
+  "user_id": "<double>",
   "name": "<string>"
 }
 ```
