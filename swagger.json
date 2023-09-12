@@ -8,7 +8,7 @@
 		"schemas": {
 			"Person": {
 				"properties": {
-					"person_id": {
+					"user_id": {
 						"type": "number",
 						"format": "double"
 					},
@@ -17,7 +17,7 @@
 					}
 				},
 				"required": [
-					"person_id",
+					"user_id",
 					"name"
 				],
 				"type": "object",
@@ -80,7 +80,7 @@
 				}
 			}
 		},
-		"/api/{personId}": {
+		"/api/{userId}": {
 			"get": {
 				"operationId": "GetUser",
 				"responses": {
@@ -95,14 +95,14 @@
 												"name": {
 													"type": "string"
 												},
-												"person_id": {
+												"user_id": {
 													"type": "number",
 													"format": "double"
 												}
 											},
 											"required": [
 												"name",
-												"person_id"
+												"user_id"
 											],
 											"type": "object"
 										},
@@ -127,7 +127,7 @@
 				"parameters": [
 					{
 						"in": "path",
-						"name": "personId",
+						"name": "userId",
 						"required": true,
 						"schema": {
 							"format": "double",
@@ -152,7 +152,7 @@
 				"parameters": [
 					{
 						"in": "path",
-						"name": "personId",
+						"name": "userId",
 						"required": true,
 						"schema": {
 							"format": "double",
@@ -185,14 +185,14 @@
 												"name": {
 													"type": "string"
 												},
-												"person_id": {
+												"user_id": {
 													"type": "number",
 													"format": "double"
 												}
 											},
 											"required": [
 												"name",
-												"person_id"
+												"user_id"
 											],
 											"type": "object"
 										},
@@ -217,7 +217,7 @@
 				"parameters": [
 					{
 						"in": "path",
-						"name": "personId",
+						"name": "userId",
 						"required": true,
 						"schema": {
 							"format": "double",

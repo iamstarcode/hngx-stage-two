@@ -11,7 +11,7 @@ import {
 } from 'tsoa';
 
 interface Person {
-  person_id: number;
+  user_id: number;
   name: string;
 }
 export type PersonCreationParams = Pick<Person, 'name'>;
@@ -34,12 +34,12 @@ export class UserController extends Controller {
     return user;
   }
 
-  @Get('{personId}')
-  async getUser(@Path() personId: number) {
+  @Get('{userId}')
+  async getUser(@Path() userId: number) {
     const user = await prisma.person.findFirst({
       where: {
-        person_id: {
-          equals: personId,
+        user_id: {
+          equals: userId,
         },
       },
     });
@@ -47,22 +47,22 @@ export class UserController extends Controller {
     prisma.$disconnect();
     if (!user) {
       this.setStatus(404);
-      return { message: 'Person not found' };
+      return { message: 'User not found' };
     } else {
       return user;
     }
   }
 
-  @Put('{personId}')
+  @Put('{userId}')
   async updateUser(
-    @Path() personId: number,
+    @Path() userId: number,
     @Body() requestBody: PersonCreationParams
   ) {
     let user;
     try {
       user = await prisma.person.update({
         where: {
-          person_id: personId,
+          user_id: userId,
         },
         data: {
           ...requestBody,
@@ -74,7 +74,7 @@ export class UserController extends Controller {
       if (error.code == 'P2025') {
         this.setStatus(404);
         return {
-          message: `Person with id ${personId} does not exit`,
+          message: `user_id ${userId} does not exit`,
         };
       }
     }
@@ -84,12 +84,12 @@ export class UserController extends Controller {
     return user;
   }
 
-  @Delete('{personId}')
-  async deleteUser(@Path() personId: number) {
+  @Delete('{userId}')
+  async deleteUser(@Path() userId: number) {
     try {
       const user = await prisma.person.delete({
         where: {
-          person_id: personId,
+          user_id: userId,
         },
       });
 
@@ -99,7 +99,7 @@ export class UserController extends Controller {
       if (error.code == 'P2025') {
         this.setStatus(404);
         return {
-          message: `Person with id ${personId} does not exit`,
+          message: `user_id ${userId} does not exit`,
         };
       }
     }
