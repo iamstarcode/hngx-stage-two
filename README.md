@@ -38,6 +38,6 @@ npx prisma migrate deploy
 
 To test the API and Documentation, Head over to the Documentation page here
 
-[Live URL](https://hngx-stage-two-1ifi.onrender.com/api/docs)
+[Live URL Docs](https://hngx-stage-two-1ifi.onrender.com/api/docs)
 
 On the docs page click on any of the API endpoint and click on the "Try it Out" button to test the API
