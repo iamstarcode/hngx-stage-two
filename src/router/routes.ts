@@ -12,30 +12,20 @@ const models: TsoaRoute.Models = {
     "Person": {
         "dataType": "refObject",
         "properties": {
-            "user_id": {"dataType":"double","required":true},
-            "age": {"dataType":"double","required":true},
+            "person_id": {"dataType":"double","required":true},
             "name": {"dataType":"string","required":true},
         },
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "ValidateErrorJSON": {
-        "dataType": "refObject",
-        "properties": {
-            "message": {"dataType":"enum","enums":["Validation failed"],"required":true},
-            "details": {"dataType":"nestedObjectLiteral","nestedProperties":{},"additionalProperties":{"dataType":"any"},"required":true},
-        },
-        "additionalProperties": false,
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Pick_Person.age-or-name_": {
+    "Pick_Person.name_": {
         "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"age":{"dataType":"double","required":true},"name":{"dataType":"string","required":true}},"validators":{}},
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"name":{"dataType":"string","required":true}},"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "PersonCreationParams": {
         "dataType": "refAlias",
-        "type": {"ref":"Pick_Person.age-or-name_","validators":{}},
+        "type": {"ref":"Pick_Person.name_","validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 };
@@ -73,13 +63,13 @@ export function RegisterRoutes(app: Router) {
             }
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        app.get('/api/:userId',
+        app.get('/api/:personId',
             ...(fetchMiddlewares<RequestHandler>(UserController)),
             ...(fetchMiddlewares<RequestHandler>(UserController.prototype.getUser)),
 
             function UserController_getUser(request: any, response: any, next: any) {
             const args = {
-                    userId: {"in":"path","name":"userId","required":true,"dataType":"double"},
+                    personId: {"in":"path","name":"personId","required":true,"dataType":"double"},
             };
 
             // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
@@ -98,13 +88,13 @@ export function RegisterRoutes(app: Router) {
             }
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        app.put('/api/:userId',
+        app.put('/api/:personId',
             ...(fetchMiddlewares<RequestHandler>(UserController)),
             ...(fetchMiddlewares<RequestHandler>(UserController.prototype.updateUser)),
 
             function UserController_updateUser(request: any, response: any, next: any) {
             const args = {
-                    userId: {"in":"path","name":"userId","required":true,"dataType":"double"},
+                    personId: {"in":"path","name":"personId","required":true,"dataType":"double"},
                     requestBody: {"in":"body","name":"requestBody","required":true,"ref":"PersonCreationParams"},
             };
 
@@ -124,13 +114,13 @@ export function RegisterRoutes(app: Router) {
             }
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        app.delete('/api/:userId',
+        app.delete('/api/:personId',
             ...(fetchMiddlewares<RequestHandler>(UserController)),
             ...(fetchMiddlewares<RequestHandler>(UserController.prototype.deleteUser)),
 
             function UserController_deleteUser(request: any, response: any, next: any) {
             const args = {
-                    userId: {"in":"path","name":"userId","required":true,"dataType":"double"},
+                    personId: {"in":"path","name":"personId","required":true,"dataType":"double"},
             };
 
             // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa

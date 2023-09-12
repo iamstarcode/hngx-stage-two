@@ -1,4 +1,4 @@
-# Project: hngx-stage-two Copy
+# Project: hngx-stage-two
 
 # 📁 Collection: api
 
@@ -7,7 +7,7 @@
 ### Method: GET
 
 > ```
-> {{baseUrl}}/api/:userId
+> {{baseUrl}}/api/:personId
 > ```
 
 ### Headers
@@ -20,9 +20,8 @@
 
 ```json
 {
-  "age": "<double>",
   "name": "<string>",
-  "user_id": "<double>"
+  "person_id": "<double>"
 }
 ```
 
@@ -33,7 +32,7 @@
 ### Method: PUT
 
 > ```
-> {{baseUrl}}/api/:userId
+> {{baseUrl}}/api/:personId
 > ```
 
 ### Headers
@@ -52,7 +51,6 @@
 
 ```json
 {
-  "age": "<double>",
   "name": "<string>"
 }
 ```
@@ -60,11 +58,7 @@
 ### Response: 200
 
 ```json
-{
-  "age": "<double>",
-  "name": "<string>",
-  "user_id": "<double>"
-}
+{}
 ```
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
@@ -74,7 +68,7 @@
 ### Method: DELETE
 
 > ```
-> {{baseUrl}}/api/:userId
+> {{baseUrl}}/api/:personId
 > ```
 
 ### Headers
@@ -87,9 +81,8 @@
 
 ```json
 {
-  "age": "<double>",
   "name": "<string>",
-  "user_id": "<double>"
+  "person_id": "<double>"
 }
 ```
 
@@ -119,7 +112,6 @@
 
 ```json
 {
-  "age": "<double>",
   "name": "<string>"
 }
 ```
@@ -128,8 +120,7 @@
 
 ```json
 {
-  "user_id": "<double>",
-  "age": "<double>",
+  "person_id": "<double>",
   "name": "<string>"
 }
 ```

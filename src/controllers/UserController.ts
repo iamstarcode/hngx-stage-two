@@ -11,11 +11,10 @@ import {
 } from 'tsoa';
 
 interface Person {
-  user_id: number;
-  age: number;
+  person_id: number;
   name: string;
 }
-export type PersonCreationParams = Pick<Person, 'age' | 'name'>;
+export type PersonCreationParams = Pick<Person, 'name'>;
 
 import { prisma } from '../db/postgres';
 
@@ -35,12 +34,12 @@ export class UserController extends Controller {
     return user;
   }
 
-  @Get('{userId}')
-  async getUser(@Path() userId: number) {
+  @Get('{personId}')
+  async getUser(@Path() personId: number) {
     const user = await prisma.person.findFirst({
       where: {
-        user_id: {
-          equals: userId,
+        person_id: {
+          equals: personId,
         },
       },
     });
@@ -54,33 +53,43 @@ export class UserController extends Controller {
     }
   }
 
-  @Put('{userId}')
+  @Put('{personId}')
   async updateUser(
-    @Path() userId: number,
+    @Path() personId: number,
     @Body() requestBody: PersonCreationParams
   ) {
-    const user = await prisma.person.update({
-      where: {
-        user_id: userId,
-      },
-      data: {
-        ...requestBody,
-      },
-    });
+    let user;
+    try {
+      user = await prisma.person.update({
+        where: {
+          person_id: personId,
+        },
+        data: {
+          ...requestBody,
+        },
+      });
+
+      this.setStatus(201);
+    } catch (error: any) {
+      if (error.code == 'P2025') {
+        this.setStatus(404);
+        return {
+          message: `Person with id ${personId} does not exit`,
+        };
+      }
+    }
 
     prisma.$disconnect();
-
-    this.setStatus(201);
 
     return user;
   }
 
-  @Delete('{userId}')
-  async deleteUser(@Path() userId: number) {
+  @Delete('{personId}')
+  async deleteUser(@Path() personId: number) {
     try {
       const user = await prisma.person.delete({
         where: {
-          user_id: userId,
+          person_id: personId,
         },
       });
 
@@ -90,7 +99,7 @@ export class UserController extends Controller {
       if (error.code == 'P2025') {
         this.setStatus(404);
         return {
-          message: `Person with id ${userId} does not exit`,
+          message: `Person with id ${personId} does not exit`,
         };
       }
     }

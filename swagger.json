@@ -8,11 +8,7 @@
 		"schemas": {
 			"Person": {
 				"properties": {
-					"user_id": {
-						"type": "number",
-						"format": "double"
-					},
-					"age": {
+					"person_id": {
 						"type": "number",
 						"format": "double"
 					},
@@ -21,32 +17,26 @@
 					}
 				},
 				"required": [
-					"user_id",
-					"age",
+					"person_id",
 					"name"
 				],
 				"type": "object",
 				"additionalProperties": false
 			},
-			"Pick_Person.age-or-name_": {
+			"Pick_Person.name_": {
 				"properties": {
-					"age": {
-						"type": "number",
-						"format": "double"
-					},
 					"name": {
 						"type": "string"
 					}
 				},
 				"required": [
-					"age",
 					"name"
 				],
 				"type": "object",
 				"description": "From T, pick a set of properties whose keys are in the union K"
 			},
 			"PersonCreationParams": {
-				"$ref": "#/components/schemas/Pick_Person.age-or-name_"
+				"$ref": "#/components/schemas/Pick_Person.name_"
 			}
 		},
 		"securitySchemes": {}
@@ -90,7 +80,7 @@
 				}
 			}
 		},
-		"/api/{userId}": {
+		"/api/{personId}": {
 			"get": {
 				"operationId": "GetUser",
 				"responses": {
@@ -102,22 +92,17 @@
 									"anyOf": [
 										{
 											"properties": {
-												"age": {
-													"type": "number",
-													"format": "double"
-												},
 												"name": {
 													"type": "string"
 												},
-												"user_id": {
+												"person_id": {
 													"type": "number",
 													"format": "double"
 												}
 											},
 											"required": [
-												"age",
 												"name",
-												"user_id"
+												"person_id"
 											],
 											"type": "object"
 										},
@@ -142,7 +127,7 @@
 				"parameters": [
 					{
 						"in": "path",
-						"name": "userId",
+						"name": "personId",
 						"required": true,
 						"schema": {
 							"format": "double",
@@ -158,27 +143,7 @@
 						"description": "Ok",
 						"content": {
 							"application/json": {
-								"schema": {
-									"properties": {
-										"age": {
-											"type": "number",
-											"format": "double"
-										},
-										"name": {
-											"type": "string"
-										},
-										"user_id": {
-											"type": "number",
-											"format": "double"
-										}
-									},
-									"required": [
-										"age",
-										"name",
-										"user_id"
-									],
-									"type": "object"
-								}
+								"schema": {}
 							}
 						}
 					}
@@ -187,7 +152,7 @@
 				"parameters": [
 					{
 						"in": "path",
-						"name": "userId",
+						"name": "personId",
 						"required": true,
 						"schema": {
 							"format": "double",
@@ -217,22 +182,17 @@
 									"anyOf": [
 										{
 											"properties": {
-												"age": {
-													"type": "number",
-													"format": "double"
-												},
 												"name": {
 													"type": "string"
 												},
-												"user_id": {
+												"person_id": {
 													"type": "number",
 													"format": "double"
 												}
 											},
 											"required": [
-												"age",
 												"name",
-												"user_id"
+												"person_id"
 											],
 											"type": "object"
 										},
@@ -257,7 +217,7 @@
 				"parameters": [
 					{
 						"in": "path",
-						"name": "userId",
+						"name": "personId",
 						"required": true,
 						"schema": {
 							"format": "double",
