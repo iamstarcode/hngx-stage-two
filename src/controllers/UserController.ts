@@ -87,13 +87,13 @@ export class UserController extends Controller {
   @Delete('{userId}')
   async deleteUser(@Path() userId: number) {
     try {
-      const user = await prisma.person.delete({
+      await prisma.person.delete({
         where: {
           user_id: userId,
         },
       });
 
-      return user;
+      this.setStatus(200);
     } catch (error: any) {
       console.log(error);
       if (error.code == 'P2025') {
