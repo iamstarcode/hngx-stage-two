@@ -34,5 +34,7 @@
     /* Advanced Options */
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true
-  }
+  },
+
+  "exclude": ["**/src/router"]
 }

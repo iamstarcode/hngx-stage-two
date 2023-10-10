@@ -179,35 +179,15 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"anyOf": [
-										{
-											"properties": {
-												"name": {
-													"type": "string"
-												},
-												"user_id": {
-													"type": "number",
-													"format": "double"
-												}
-											},
-											"required": [
-												"name",
-												"user_id"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"message": {
-													"type": "string"
-												}
-											},
-											"required": [
-												"message"
-											],
-											"type": "object"
+									"properties": {
+										"message": {
+											"type": "string"
 										}
-									]
+									},
+									"required": [
+										"message"
+									],
+									"type": "object"
 								}
 							}
 						}

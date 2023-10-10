@@ -12,7 +12,7 @@ const models: TsoaRoute.Models = {
     "Person": {
         "dataType": "refObject",
         "properties": {
-            "person_id": {"dataType":"double","required":true},
+            "user_id": {"dataType":"double","required":true},
             "name": {"dataType":"string","required":true},
         },
         "additionalProperties": false,
@@ -63,13 +63,13 @@ export function RegisterRoutes(app: Router) {
             }
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        app.get('/api/:personId',
+        app.get('/api/:userId',
             ...(fetchMiddlewares<RequestHandler>(UserController)),
             ...(fetchMiddlewares<RequestHandler>(UserController.prototype.getUser)),
 
             function UserController_getUser(request: any, response: any, next: any) {
             const args = {
-                    personId: {"in":"path","name":"personId","required":true,"dataType":"double"},
+                    userId: {"in":"path","name":"userId","required":true,"dataType":"double"},
             };
 
             // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
@@ -88,13 +88,13 @@ export function RegisterRoutes(app: Router) {
             }
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        app.put('/api/:personId',
+        app.put('/api/:userId',
             ...(fetchMiddlewares<RequestHandler>(UserController)),
             ...(fetchMiddlewares<RequestHandler>(UserController.prototype.updateUser)),
 
             function UserController_updateUser(request: any, response: any, next: any) {
             const args = {
-                    personId: {"in":"path","name":"personId","required":true,"dataType":"double"},
+                    userId: {"in":"path","name":"userId","required":true,"dataType":"double"},
                     requestBody: {"in":"body","name":"requestBody","required":true,"ref":"PersonCreationParams"},
             };
 
@@ -114,13 +114,13 @@ export function RegisterRoutes(app: Router) {
             }
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        app.delete('/api/:personId',
+        app.delete('/api/:userId',
             ...(fetchMiddlewares<RequestHandler>(UserController)),
             ...(fetchMiddlewares<RequestHandler>(UserController.prototype.deleteUser)),
 
             function UserController_deleteUser(request: any, response: any, next: any) {
             const args = {
-                    personId: {"in":"path","name":"personId","required":true,"dataType":"double"},
+                    userId: {"in":"path","name":"userId","required":true,"dataType":"double"},
             };
 
             // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa

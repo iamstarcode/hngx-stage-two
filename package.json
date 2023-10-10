@@ -5,7 +5,7 @@
   "main": "build/src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec-routes\"",
+    "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec-and-routes\"",
     "build": "tsoa spec-and-routes && tsc",
     "start": "node build/src/app.js",
     "predev": "npm run swagger",

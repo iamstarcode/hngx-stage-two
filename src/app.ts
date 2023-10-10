@@ -12,13 +12,9 @@ import swaggerUI from 'swagger-ui-express';
 
 const app = express();
 
-app.use(
-  '/api/docs',
-  swaggerUI.serve,
-  async (_req: ExRequest, res: ExResponse) => {
-    return res.send(swaggerUI.generateHTML(await import('../swagger.json')));
-  }
-);
+app.use('/docs', swaggerUI.serve, async (_req: ExRequest, res: ExResponse) => {
+  return res.send(swaggerUI.generateHTML(await import('../swagger.json')));
+});
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
